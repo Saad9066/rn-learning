@@ -21,6 +21,18 @@ const HomeScreen = ({navigation}) => {
    <Button
    title="Image Screen"
    onPress={()=>navigation.navigate('Image')} />
+    <Button
+   title="Counter Demo"
+   onPress={()=>navigation.navigate('Counter')} />
+   <Button
+   title="Color Demo"
+   onPress={()=>navigation.navigate('Color')} />
+    <Button
+   title="Color Square"
+   onPress={()=>navigation.navigate('Square')} />
+   <Button
+   title="Text screen "
+   onPress={()=>navigation.navigate('Text')} />
    {/* touch able opacity require both openening closing tab
    <TouchableOpacity onPress={()=>props.navigation.navigate('List')}>
      <Text>Go To List</Text>

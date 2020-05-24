@@ -1,0 +1,68 @@
+import React,{useState} from 'react';
+import {View ,Text,Button,StyleSheet,FlatList} from 'react-native';
+import ColorCounter from '../components/ColorCounter';
+//for constant value to increament
+const COLOR_INCREAMENT=15;
+const SquareScreen=()=>{  
+    //first create three diffrent state values 
+    //these states are extremely related there are well known way to update the state using reducer
+
+    const [red, setRed]=useState(0);
+    const [green, setGreen]=useState(0);
+    const [blue, setBlue]=useState(0);
+
+    const setColor =(color,change)=>{
+    // if(color === 'red'){    
+    //     //color red green blue
+    //     //change +15 -15   
+    //     if(red + change > 225 || red + change < 0){
+    //         return;
+    //     }
+    //     else{
+    //        setRed(red+change);
+    //        console.log('sdd');
+    //        console.log(red);
+
+    //     }
+    // };
+     switch(color){
+        case'red':
+        //can't use return so null is used in aternary operator
+        red + change > 225 || red + change < 0 ? null:setRed(red+change);
+         return;
+        case'green':
+         //can't use return so null is used in aternary operator
+         green + change > 225 || green + change < 0 ? null:setGreen(green+change);
+          return;
+        case'blue':
+          //can't use return so null is used in aternary operator
+          blue + change > 225 || blue + change < 0 ? null:setBlue(blue+change);
+           return;
+        default:
+            return;
+        };
+        
+    }
+ //console.log(red);
+    return <View>
+    {/* use call back guntion to send to componenet color counter */}
+        <ColorCounter 
+        onIncrease={()=>setColor('red',COLOR_INCREAMENT)} 
+        onDecrease={()=>setColor('red',-1*COLOR_INCREAMENT)} 
+        color="RED"/>
+        <ColorCounter color="Green" 
+        onIncrease={()=>setColor('green',COLOR_INCREAMENT)} 
+        onDecrease={()=>setColor('green',-1*COLOR_INCREAMENT)}/>
+        <ColorCounter color="Blue" 
+        onIncrease={()=>setColor('blue',COLOR_INCREAMENT)} 
+        onDecrease={()=>setColor('blue',COLOR_INCREAMENT)}/>
+
+        <View style={{height:150,width:150, backgroundColor:`rgb(${red},${green},${blue})`}}/>
+        
+    </View>
+};
+
+const style=StyleSheet.create (
+{
+});
+export default SquareScreen;
